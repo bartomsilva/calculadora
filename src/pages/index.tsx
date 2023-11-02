@@ -16,7 +16,7 @@ export default function Home() {
     return "+-/*".includes(key)
   }
 
-  function lastkey(){
+  function lastkey() {
     return lineDown.charAt(lineDown.length - 1)
   }
 
@@ -31,7 +31,7 @@ export default function Home() {
         let newLineUp = lineUp.replace(/[*\-+/]/g, '') + key
         setLineUp(newLineUp)
       } else {
-         if (!isSymbolEqualLastKey(key,lastkey()) && lineDown.length) {
+        if (!isSymbolEqualLastKey(key, lastkey()) && lineDown.length) {
           setLineUp(key)
         }
       }
@@ -60,7 +60,7 @@ export default function Home() {
       case key == "=":
         if (!isSymbol(lineDown.charAt(lineDown.length - 1))) {
           let result = eval(lineDown)
-          if(!Number.isInteger(result)){
+          if (!Number.isInteger(result)) {
             result = result.toFixed(4)
           }
           setLineUp(result)
@@ -68,14 +68,12 @@ export default function Home() {
         }
         break
       case (key !== "BS"):
-        const lastKey = lastkey() 
-        console.log("key",key)
-        console.log("lastkey",lastKey)
-        if (!isSymbolEqualLastKey(key,lastKey)) {
+        const lastKey = lastkey()
+        if (!isSymbolEqualLastKey(key, lastKey)) {
           newExpression = expression + key
           setExpression(newExpression)
           setLineDown(newExpression)
-       }
+        }
     }
     setLastKey(key)
 
@@ -140,8 +138,8 @@ export default function Home() {
   )
 }
 
-function getValueButton(key: string) {
+// function getValueButton(key: string) {
 
-  console.log(key)
-}
+//   console.log(key)
+// }
 
