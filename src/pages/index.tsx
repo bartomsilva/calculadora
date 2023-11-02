@@ -28,7 +28,7 @@ export default function Home() {
       }
     }
 
-    let newExpression=""
+    let newExpression = ""
 
     switch (true) {
       case key == "CE":
@@ -41,20 +41,20 @@ export default function Home() {
         newExpression = expression.slice(0, -1)
         setExpression(newExpression)
         setLineDown(newExpression)
-        if(start){
+        if (start) {
           setLineUp(newExpression)
         } else {
           setLineUp("")
         }
         break
       case key == "=":
-        if(!isSymbol(lineDown.charAt(lineDown.length-1))){
+        if (!isSymbol(lineDown.charAt(lineDown.length - 1))) {
           const result = eval(lineDown)
           setLineUp(result)
           setStart(false)
         }
         break
-      case (key !== "BS"):        
+      case (key !== "BS"):
         newExpression = expression + key
         setExpression(newExpression)
         setLineDown(newExpression)
@@ -78,27 +78,43 @@ export default function Home() {
 
       <div className='calcPanel'>
         <div className="containerNumbers">
-          <button onClick={() => setValue('7')} className='buttonSmall'>7</button>
-          <button onClick={() => setValue('8')} className='buttonSmall'>8</button>
-          <button onClick={() => setValue('9')} className='buttonSmall'>9</button>
-          <button onClick={() => setValue('4')} className='buttonSmall'>4</button>
-          <button onClick={() => setValue('5')} className='buttonSmall'>5</button>
-          <button onClick={() => setValue('6')} className='buttonSmall'>6</button>
-          <button onClick={() => setValue('1')} className='buttonSmall'>1</button>
-          <button onClick={() => setValue('2')} className='buttonSmall'>2</button>
-          <button onClick={() => setValue('3')} className='buttonSmall'>3</button>
-          <button onClick={() => setValue('0')} className='buttonMedium'>0</button>
-          <button onClick={() => setValue('.')} className='buttonSmall'>.</button>
+          <div className='buttons'>
+            <button onClick={() => setValue('7')} className='buttonSmall'>7</button>
+            <button onClick={() => setValue('8')} className='buttonSmall'>8</button>
+            <button onClick={() => setValue('9')} className='buttonSmall'>9</button>
+          </div>
+          <div className='buttons'>
+            <button onClick={() => setValue('4')} className='buttonSmall'>4</button>
+            <button onClick={() => setValue('5')} className='buttonSmall'>5</button>
+            <button onClick={() => setValue('6')} className='buttonSmall'>6</button>
+          </div>
+          <div className='buttons'>
+            <button onClick={() => setValue('1')} className='buttonSmall'>1</button>
+            <button onClick={() => setValue('2')} className='buttonSmall'>2</button>
+            <button onClick={() => setValue('3')} className='buttonSmall'>3</button>
+          </div>
+          <div className='buttons'>
+            <button onClick={() => setValue('0')} className='buttonMedium'>0</button>
+            <button onClick={() => setValue('.')} className='buttonSmall'>.</button>
+          </div>
         </div>
 
         <div className='containerSymbols'>
-          <button onClick={() => setValue('CE')} className='buttonSmall bg-[#4a8cfa]'> CE</button>
-          <button onClick={() => setValue('BS')} className='buttonSmall bg-[#fa4a4a]'> ◄-</button>
-          <button onClick={() => setValue('/')} className='buttonSmall'>/</button>
-          <button onClick={() => setValue('*')} className='buttonSmall'>*</button>
-          <button onClick={() => setValue('-')} className='buttonSmall'>-</button>
-          <button onClick={() => setValue('+')} className='buttonSmall'>+</button>
-          <button onClick={() => setValue('=')} className='buttonMedium bg-[#F4F622]'>=</button>
+          <div className='buttons'>
+            <button onClick={() => setValue('CE')} className='buttonSmall bg-[#4a8cfa]'> CE</button>
+            <button onClick={() => setValue('BS')} className='buttonSmall bg-[#fa4a4a]'> ◄-</button>
+          </div>
+          <div className='buttons'>
+            <button onClick={() => setValue('/')} className='buttonSmall'>/</button>
+            <button onClick={() => setValue('*')} className='buttonSmall'>*</button>
+          </div>
+          <div className='buttons'>
+            <button onClick={() => setValue('-')} className='buttonSmall'>-</button>
+            <button onClick={() => setValue('+')} className='buttonSmall'>+</button>
+          </div>
+          <div className='buttons'>
+            <button onClick={() => setValue('=')} className='buttonUniq bg-[#F4F622]'>=</button>
+          </div>
         </div>
 
       </div>

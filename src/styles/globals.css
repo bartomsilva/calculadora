@@ -2,14 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-
+:root {  
 }
+
 
 body {
   min-height: 100vh;
   box-sizing: border-box;
-  border: 1px solid orange;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,10 +16,13 @@ body {
 }
 
 .calculator {
-  width: 460px;
+  max-width: 460px;
+  min-width: 320px;
+  width: 100%;
   height: fit-content;
   padding: 5px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .display {
@@ -53,22 +55,28 @@ body {
   gap: 15px
 }
 .containerNumbers, .containerSymbols {
-  width: 270px;
-  display: flex;
+  width: 60%;
+  display: flex; 
+  flex-direction: column;
   gap: 10px;
   padding: 5px 0;
-  flex-wrap: wrap;
   justify-content: space-between;
 
 }
 .containerSymbols {
-  width: 180px;
-  ;
+  width: 40%;
+  
 }
 
-.buttonSmall, .buttonMedium {
-  width: 80px;
-  height: 50px;
+.buttons {
+  display: flex;
+  gap: 10px
+}
+
+.buttonSmall, .buttonMedium, .buttonUniq {
+  width: 30%;
+  min-width: 50px;
+  height: 40px;
   border: 1px solid rgba(0,0,0,.3);
   border-radius: 12px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -76,5 +84,9 @@ body {
 }
 
 .buttonMedium {
-  width: 170px;
+  width: 63%;
+}
+
+.buttonUniq {
+  width: 100%;
 }
