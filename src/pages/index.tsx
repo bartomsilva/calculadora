@@ -119,8 +119,8 @@ export default function Home() {
 
         <div className='containerSymbols'>
           <div className='containerButtons'>
-            <button onClick={() => setValue('CE')} className='buttonSmall bg-[#4a8cfa]'> CE</button>
-            <button onClick={() => setValue('BS')} className='buttonSmall bg-[#fa4a4a]'> ◄-</button>
+            <button onClick={() => setValue('CE')} className='buttonSmall bg-[#4a8cfa]'>CE</button>
+            <button onClick={() => setValue('BS')} className='buttonSmall bg-[#fa4a4a]'>◄-</button>
           </div>
           <div className='containerButtons'>
             <button onClick={() => setValue('/')} className='buttonSmall'>/</button>

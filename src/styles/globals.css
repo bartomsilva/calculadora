@@ -54,7 +54,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 15px
+  gap: 10px;
 }
 
 .containerNumbers, .containerSymbols {
@@ -64,7 +64,6 @@ body {
   gap: 10px;
   padding: 5px 0;
   justify-content: space-between;
-
 }
 
 .containerSymbols {
@@ -73,7 +72,9 @@ body {
 
 .containerButtons {
   display: flex;
-  gap: 10px
+  gap: 10px;
+  min-width: 100%;
+  justify-content: space-between;
 }
 
 .buttonSmall, .buttonMedium, .buttonUniq {
@@ -89,9 +90,9 @@ body {
 }
 
 .buttonMedium {
-  width: 63%;
+  width: 65%;
 }
 
 .buttonUniq {
-  width: 100%;
+  min-width: 100%;
 }
