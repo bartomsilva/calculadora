@@ -21,9 +21,9 @@ export default function Home() {
 
   function setValue(key: string) {
 
-    // if (isSymbol(key) || !isNaN(+key) && start) {
     if (isSymbol(key) || !isNaN(+key)) {
       if (!isNaN(+key)) {
+        console.log("vim")
         let newLineUp = lineUp.replace(/[*\-+/]/g, '') + key
         setLineUp(newLineUp)
       } else {
@@ -86,41 +86,41 @@ export default function Home() {
 
       <div className='calcPanel'>
         <div className="containerNumbers">
-          <div className='buttons'>
+          <div className='containerButtons'>
             <button onClick={() => setValue('7')} className='buttonSmall'>7</button>
             <button onClick={() => setValue('8')} className='buttonSmall'>8</button>
             <button onClick={() => setValue('9')} className='buttonSmall'>9</button>
           </div>
-          <div className='buttons'>
+          <div className='containerButtons'>
             <button onClick={() => setValue('4')} className='buttonSmall'>4</button>
             <button onClick={() => setValue('5')} className='buttonSmall'>5</button>
             <button onClick={() => setValue('6')} className='buttonSmall'>6</button>
           </div>
-          <div className='buttons'>
+          <div className='containerButtons'>
             <button onClick={() => setValue('1')} className='buttonSmall'>1</button>
             <button onClick={() => setValue('2')} className='buttonSmall'>2</button>
             <button onClick={() => setValue('3')} className='buttonSmall'>3</button>
           </div>
-          <div className='buttons'>
+          <div className='containerButtons'>
             <button onClick={() => setValue('0')} className='buttonMedium'>0</button>
             <button onClick={() => setValue('.')} className='buttonSmall'>.</button>
           </div>
         </div>
 
         <div className='containerSymbols'>
-          <div className='buttons'>
+          <div className='containerButtons'>
             <button onClick={() => setValue('CE')} className='buttonSmall bg-[#4a8cfa]'> CE</button>
             <button onClick={() => setValue('BS')} className='buttonSmall bg-[#fa4a4a]'> ◄-</button>
           </div>
-          <div className='buttons'>
+          <div className='containerButtons'>
             <button onClick={() => setValue('/')} className='buttonSmall'>/</button>
             <button onClick={() => setValue('*')} className='buttonSmall'>*</button>
           </div>
-          <div className='buttons'>
+          <div className='containerButtons'>
             <button onClick={() => setValue('-')} className='buttonSmall'>-</button>
             <button onClick={() => setValue('+')} className='buttonSmall'>+</button>
           </div>
-          <div className='buttons'>
+          <div className='containerButtons'>
             <button onClick={() => setValue('=')} className='buttonUniq bg-[#F4F622]'>=</button>
           </div>
         </div>
