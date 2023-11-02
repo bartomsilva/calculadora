@@ -59,7 +59,7 @@ export default function Home() {
       case key == "=":
         if (!isSymbol(lineDown.charAt(lineDown.length - 1))) {
           const result = eval(lineDown)
-          setLineUp(result)
+          setLineUp(result.toFixed(4))
           setStart(false)
         }
         break
