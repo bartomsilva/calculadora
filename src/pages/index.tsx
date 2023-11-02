@@ -5,7 +5,7 @@ import { useState } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [ultKey, setUltKey] = useState<string>("")
+  const [lastKey, setLastKey] = useState<string>("")
   const [start, setStart] = useState(true)
   const [expression, setExpression] = useState<string>("")
   const [lineUp, setLineUp] = useState<string>("")
@@ -15,14 +15,19 @@ export default function Home() {
     return "+-/*".includes(key)
   }
 
+  function isEqualLastKey(key: string, lastKey: string) {
+    return isSymbol(key) && isSymbol(lastKey)
+  }
+
   function setValue(key: string) {
 
-    if (isSymbol(key) || !isNaN(+key) && start) {
+    // if (isSymbol(key) || !isNaN(+key) && start) {
+    if (isSymbol(key) || !isNaN(+key)) {
       if (!isNaN(+key)) {
         let newLineUp = lineUp.replace(/[*\-+/]/g, '') + key
         setLineUp(newLineUp)
       } else {
-        if (!isSymbol(ultKey)) {
+        if (!isSymbol(lastKey) && lineDown.length) {
           setLineUp(key)
         }
       }
@@ -39,10 +44,11 @@ export default function Home() {
         break
       case (key == "BS"):
         newExpression = expression.slice(0, -1)
+        const newLineUp = lineUp.toString().slice(0, -1)
         setExpression(newExpression)
         setLineDown(newExpression)
         if (start) {
-          setLineUp(newExpression)
+          setLineUp(newLineUp)
         } else {
           setLineUp("")
         }
@@ -55,11 +61,13 @@ export default function Home() {
         }
         break
       case (key !== "BS"):
-        newExpression = expression + key
-        setExpression(newExpression)
-        setLineDown(newExpression)
+        if (!isEqualLastKey(key, lineDown.charAt(lineDown.length - 1))) {
+          newExpression = expression + key
+          setExpression(newExpression)
+          setLineDown(newExpression)
+        }
     }
-    setUltKey(key)
+    setLastKey(key)
 
   }
   return (
@@ -116,7 +124,6 @@ export default function Home() {
             <button onClick={() => setValue('=')} className='buttonUniq bg-[#F4F622]'>=</button>
           </div>
         </div>
-
       </div>
 
     </main>
