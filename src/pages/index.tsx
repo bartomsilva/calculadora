@@ -1,5 +1,6 @@
 // import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Result from 'postcss/lib/result'
 import { useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -58,8 +59,11 @@ export default function Home() {
         break
       case key == "=":
         if (!isSymbol(lineDown.charAt(lineDown.length - 1))) {
-          const result = eval(lineDown)
-          setLineUp(result.toFixed(4))
+          let result = eval(lineDown)
+          if(!Number.isInteger(result)){
+            result = result.toFixed(4)
+          }
+          setLineUp(result)
           setStart(false)
         }
         break
