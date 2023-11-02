@@ -15,7 +15,11 @@ export default function Home() {
     return "+-/*".includes(key)
   }
 
-  function isEqualLastKey(key: string, lastKey: string) {
+  function lastkey(){
+    return lineDown.charAt(lineDown.length - 1)
+  }
+
+  function isSymbolEqualLastKey(key: string, lastKey: string) {
     return isSymbol(key) && isSymbol(lastKey)
   }
 
@@ -23,11 +27,10 @@ export default function Home() {
 
     if (isSymbol(key) || !isNaN(+key)) {
       if (!isNaN(+key)) {
-        console.log("vim")
         let newLineUp = lineUp.replace(/[*\-+/]/g, '') + key
         setLineUp(newLineUp)
       } else {
-        if (!isSymbol(lastKey) && lineDown.length) {
+         if (!isSymbolEqualLastKey(key,lastkey()) && lineDown.length) {
           setLineUp(key)
         }
       }
@@ -61,11 +64,14 @@ export default function Home() {
         }
         break
       case (key !== "BS"):
-        if (!isEqualLastKey(key, lineDown.charAt(lineDown.length - 1))) {
+        const lastKey = lastkey() 
+        console.log("key",key)
+        console.log("lastkey",lastKey)
+        if (!isSymbolEqualLastKey(key,lastKey)) {
           newExpression = expression + key
           setExpression(newExpression)
           setLineDown(newExpression)
-        }
+       }
     }
     setLastKey(key)
 
