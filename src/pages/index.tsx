@@ -13,7 +13,7 @@ export default function Home() {
   const [lineDown, setLineDown] = useState<string>("")
 
   function isSymbol(key: string) {
-    return "+-/*".includes(key)
+    return "+-/*.".includes(key)
   }
 
   function lastkey() {
@@ -26,8 +26,8 @@ export default function Home() {
 
   function setValue(key: string) {
 
-    if (isSymbol(key) || !isNaN(+key)) {
-      if (!isNaN(+key)) {
+    if (isSymbol(key) || !isNaN(+key) || key==='.') {
+      if (!isNaN(+key) || key==='.') {
         let newLineUp = lineUp.replace(/[*\-+/]/g, '') + key
         setLineUp(newLineUp)
       } else {
@@ -61,7 +61,7 @@ export default function Home() {
         if (!isSymbol(lineDown.charAt(lineDown.length - 1))) {
           let result = eval(lineDown)
           if (!Number.isInteger(result)) {
-            result = result.toFixed(4)
+            result = result.toFixed(2)
           }
           setLineUp(result)
           setStart(false)
